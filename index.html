@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>UserSearch con React Hooks (useMemo)</title>
+  <title>UserSearch con React Hooks (useMemo) - Case Insensitive</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
@@ -107,8 +107,10 @@
 
       const filteredUsers = useMemo(() => {
         console.log('Filtrando usuarios...');
+        const lowerSearch = search.toLowerCase();
         return users.filter(u =>
-          u.name.includes(search) || u.description.includes(search)
+          u.name.toLowerCase().includes(lowerSearch) ||
+          u.description.toLowerCase().includes(lowerSearch)
         );
       }, [search, users]);
 
